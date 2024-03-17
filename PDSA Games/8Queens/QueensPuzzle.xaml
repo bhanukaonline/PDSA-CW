@@ -8,15 +8,8 @@
         Title="QueensPuzzle" Height="450" Width="800">
     <Grid>
         <Label Content="8 Queens Puzzle" HorizontalAlignment="Center" Height="41" Margin="0,21,0,0" VerticalAlignment="Top" Width="168" FontSize="18" FontFamily="Cascadia Code SemiBold"/>
-        <Grid HorizontalAlignment="Center" Height="256" Margin="0,67,0,0" VerticalAlignment="Top" Width="568">
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="#FF900000" Offset="1"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-        </Grid>
-        <Button x:Name="startGame" Content="Start Game" HorizontalAlignment="Left" Height="55" Margin="353,348,0,0" VerticalAlignment="Top" Width="114" FontFamily="Copperplate Gothic Bold" FontSize="16"/>
+        <Button x:Name="startGame" Content="Start Game" HorizontalAlignment="Center" Height="55" Margin="0,199,0,0" VerticalAlignment="Top" Width="114" FontFamily="Copperplate Gothic Bold" FontSize="16"/>
+        <Label Content="Max Score: 69" HorizontalAlignment="Center" Margin="0,130,0,0" VerticalAlignment="Top" Height="33" Width="96"/>
 
     </Grid>
 </Window>
