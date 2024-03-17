@@ -50,5 +50,13 @@ namespace PDSA_Games
             Window mainWindow = Application.Current.MainWindow;
             mainWindow.Close();
         }
+
+        private void ShortestPath_Click(object sender, RoutedEventArgs e)
+        {
+            ShortestPath shortestPath = new ShortestPath();
+            shortestPath.Show();
+            Window mainWindow = Application.Current.MainWindow;
+            mainWindow.Close();
+        }
     }
 }

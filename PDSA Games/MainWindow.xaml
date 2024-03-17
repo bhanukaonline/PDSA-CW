@@ -11,8 +11,9 @@
             <ImageBrush ImageSource="/WIN_20240210_11_57_50_Pro (2).jpg"/>
         </Grid.Background>
         <Label Content="Cute Beutiful Games" HorizontalAlignment="Center" Height="53" Margin="0,53,0,0" VerticalAlignment="Top" Width="230" FontSize="22" FontWeight="Bold"/>
-        <Button x:Name="queens" Content="8 Queens Puzzle" HorizontalAlignment="Left" Height="56" Margin="70,174,0,0" VerticalAlignment="Top" Width="195" FontFamily="Cascadia Mono SemiBold" FontSize="18" Click="_8queens_Click"/>
-        <Button x:Name="tictactoe" Content="Tic Tac Toe" HorizontalAlignment="Left" Height="56" Margin="285,174,0,0" VerticalAlignment="Top" Width="195" FontFamily="Cascadia Mono SemiBold" FontSize="18" Click="tictactoe_Click"/>
-        <Button x:Name="remValue" Content="Remember the Value" HorizontalAlignment="Left" Height="56" Margin="511,174,0,0" VerticalAlignment="Top" Width="195" FontFamily="Cascadia Mono SemiBold" FontSize="18" Click="remValue_Click"/>
+        <Button x:Name="queens" Content="8 Queens Puzzle" HorizontalAlignment="Left" Height="56" Margin="120,173,0,0" VerticalAlignment="Top" Width="195" FontFamily="Cascadia Mono SemiBold" FontSize="18" Click="_8queens_Click"/>
+        <Button x:Name="tictactoe" Content="Tic Tac Toe" HorizontalAlignment="Left" Height="56" Margin="336,173,0,0" VerticalAlignment="Top" Width="195" FontFamily="Cascadia Mono SemiBold" FontSize="18" Click="tictactoe_Click"/>
+        <Button x:Name="remValue" Content="Remember the Value" HorizontalAlignment="Left" Height="56" Margin="547,173,0,0" VerticalAlignment="Top" Width="195" FontFamily="Cascadia Mono SemiBold" FontSize="18" Click="remValue_Click"/>
+        <Button x:Name="ShortestPath" Content="Shortest Path" HorizontalAlignment="Left" Height="59" Margin="347,276,0,0" VerticalAlignment="Top" Width="173" Click="ShortestPath_Click" FontSize="18" FontFamily="Cascadia Mono SemiBold"/>
     </Grid>
 </Window>
