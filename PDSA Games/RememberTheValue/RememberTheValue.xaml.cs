@@ -21,7 +21,7 @@ namespace PDSA_Games
     {
         public RememberTheValue()
         {
-            InitializeComponent();
+            InitializeComponent();//summary
         }
     }
 }
