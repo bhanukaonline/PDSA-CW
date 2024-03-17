@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Security.Policy;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -33,12 +34,21 @@ namespace PDSA_Games
 
         private void tictactoe_Click(object sender, RoutedEventArgs e)
         {
+            TicTacToe ticTacToe = new TicTacToe();
+            ticTacToe.Show();
+
+            Window mainWindow = Application.Current.MainWindow;
+            mainWindow.Close();
 
         }
 
         private void remValue_Click(object sender, RoutedEventArgs e)
         {
+            RememberTheValue rememberTheValue = new RememberTheValue();
+            rememberTheValue.Show();
 
+            Window mainWindow = Application.Current.MainWindow;
+            mainWindow.Close();
         }
     }
 }
