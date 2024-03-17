@@ -20,5 +20,25 @@ namespace PDSA_Games
         {
             InitializeComponent();
         }
+
+        private void _8queens_Click(object sender, RoutedEventArgs e)
+        {
+            QueensPuzzle queensPuzzle = new QueensPuzzle();
+
+            queensPuzzle.Show();
+
+            Window mainWindow = Application.Current.MainWindow;
+            mainWindow.Close();
+        }
+
+        private void tictactoe_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void remValue_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

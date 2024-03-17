@@ -9,4 +9,20 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="WIN_20240210_11_57_50_Pro %282%29.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="WIN_20240210_11_57_50_Pro (2).jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\bhanu\source\repos\PDSA Games\PDSA Games\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\bhanu\source\repos\PDSA Games\PDSA Games\.editorconfig" />
+  </ItemGroup>
+
 </Project>
