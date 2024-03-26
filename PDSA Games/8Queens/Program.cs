@@ -7,7 +7,14 @@ namespace PDSA_Games
     public class Solution
     {
         public int Number { get; set; }
-        public string Board { get; set; }
+        public int[,] Board { get; set; } // Changed from string to int[,]
+
+        // Constructor to initialize the Board property
+        public Solution(int number, int[,] board)
+        {
+            Number = number;
+            Board = board;
+        }
     }
 
     class Program
@@ -67,17 +74,11 @@ namespace PDSA_Games
                             j--;
                             count++;
 
-                            StringBuilder boardString = new StringBuilder();
-                            for (int p = 0; p < N; p++)
-                            {
-                                for (int q = 0; q < N; q++)
-                                {
-                                    boardString.Append(board[p, q] + " ");
-                                }
-                                boardString.AppendLine();
-                            }
+                            // Create a copy of the board array to avoid modifying the same instance in solutions list
+                            int[,] boardCopy = new int[N, N];
+                            Array.Copy(board, boardCopy, board.Length);
 
-                            solutions.Add(new Solution { Number = count, Board = boardString.ToString() });
+                            solutions.Add(new Solution(count, boardCopy));
                         }
                     }
                 }
