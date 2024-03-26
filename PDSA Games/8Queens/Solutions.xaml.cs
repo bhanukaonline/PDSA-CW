@@ -20,15 +20,14 @@ namespace PDSA_Games._8Queens
     /// </summary>
     public partial class Solutions : Window
     {
+        private List<Solution> solutions;
+        private int currentSolutionIndex;
+
         public Solutions()
         {
             InitializeComponent();
-            List<Solution> solutions = Program.GenerateSolutions();
-            if (solutions.Any()) // Check if there are any solutions
-            {
-                var firstSolution = solutions.First();
-                dataGrid.ItemsSource = ConvertToDataTable(firstSolution.Board).DefaultView;
-            }
+            solutions = Program.GenerateSolutions();
+            currentSolutionIndex = -1;
         }
 
         private DataTable ConvertToDataTable(int[,] array)
@@ -52,5 +51,15 @@ namespace PDSA_Games._8Queens
             return dataTable;
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (solutions.Any()) // Check if there are any solutions
+            {
+                currentSolutionIndex = (currentSolutionIndex + 1) % solutions.Count;
+                var currentSolution = solutions[currentSolutionIndex];
+                dataGrid.ItemsSource = ConvertToDataTable(currentSolution.Board).DefaultView;
+                lblSolution.Content = $"Solution {currentSolutionIndex + 1} of {solutions.Count}";
+            }
+        }
     }
 }
