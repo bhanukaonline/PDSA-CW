@@ -10,19 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PDSA_Games
+namespace PDSA_Games._8Queens
 {
     /// <summary>
-    /// Interaction logic for chess.xaml
+    /// Interaction logic for Solutions.xaml
     /// </summary>
-    public partial class chess : Page
+    public partial class Solutions : Window
     {
-        public chess()
+        public Solutions()
         {
             InitializeComponent();
+            List<Solution> solutions = Program.GenerateSolutions();
+            dataGrid.ItemsSource = solutions;
         }
     }
 }
