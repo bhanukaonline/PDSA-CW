@@ -28,15 +28,14 @@ namespace PDSA_Games
 
         private void startGame_Click(object sender, RoutedEventArgs e)
         {
+            DialogBox play=new DialogBox();
+            play.Show();
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
             Solutions solutions = new Solutions();
-            QueensPuzzle queensPuzzle = new QueensPuzzle();
-
             solutions.Show();
-
-            Window mainWindow = Application.Current.MainWindow;
-            queensPuzzle.Close();
-
         }
     }
 }

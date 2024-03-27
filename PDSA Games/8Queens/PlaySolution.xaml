@@ -7,6 +7,52 @@
         mc:Ignorable="d"
         Title="PlaySolution" Height="450" Width="800">
     <Grid>
-        <Grid HorizontalAlignment="Left" Height="277" Margin="223,63,0,0" VerticalAlignment="Top" Width="377"/>
+        <Button Content="Submit Solution" Click="SubmitButton_Click" Margin="522,50,162,334"/>
+        <Label x:Name="ResultLabel" Content="text" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="506,133,0,0" RenderTransformOrigin="0.5,0.5" Width="183">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.412"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label x:Name="lblIndex" Content="Label" HorizontalAlignment="Left" Height="37" Margin="514,241,0,0" VerticalAlignment="Top" Width="254"/>
+        <Grid x:Name="ChessboardGrid">
+            <Grid.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Width" Value="50"/>
+                    <Setter Property="Height" Value="50"/>
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="Command" Value="{Binding PlaceQueenCommand}"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <!-- Define rows for the chessboard -->
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <!-- Define columns for the chessboard -->
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+
     </Grid>
+
 </Window>

@@ -162,5 +162,42 @@ namespace PDSA_Games
             }
             return true;
         }
+        public static int GetSolutionIndex(int[,] chessboard)
+        {
+            // Loop through the solutions list to find the index of the matching solution
+            List<Solution> solutions = GenerateSolutions();
+            int index = -1;
+
+            foreach (Solution solution in solutions)
+            {
+                bool isMatch = true;
+
+                // Compare the chessboard with the solution's board
+                for (int i = 0; i < N; i++)
+                {
+                    for (int j = 0; j < N; j++)
+                    {
+                        if (chessboard[i, j] != solution.Board[i, j])
+                        {
+                            isMatch = false;
+                            break;
+                        }
+                    }
+
+                    if (!isMatch)
+                    {
+                        break;
+                    }
+                }
+
+                if (isMatch)
+                {
+                    index = solution.Number;
+                    break;
+                }
+            }
+
+            return index;
+        }
     }
 }
