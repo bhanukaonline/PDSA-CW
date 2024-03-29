@@ -70,6 +70,8 @@ namespace PDSA_Games._8Queens
             // Call SolutionCheck function and update result label
             bool isSolutionCorrect = Program.SolutionCheck(chessboard);
 
+            int? WinnderID;
+
             if (isSolutionCorrect)
             {
 
@@ -78,14 +80,28 @@ namespace PDSA_Games._8Queens
                 int Index= Program.GetSolutionIndex(chessboard);
                 lblIndex.Content = "Your found solution Number: " + Index;
                 var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    string insertQuery = "INSERT INTO Winner (Name, SolutionIndex) VALUES (@Value1, @Value2)";
+                    string checkQuery = " select from Winner where SolutionIndex = @Index ";
 
-                    int affectedRows = connection.Execute(insertQuery, new { Value1 = Username, Value2 = Index });
+                   WinnderID = connection.Execute(checkQuery, new { Index = Index });
 
 
                 }
+
+                if (WinnderID != null)
+                {
+                    using (var connection = new SqlConnection(connectionString))
+                    {
+                        string insertQuery = "INSERT INTO Winner (Name, SolutionIndex) VALUES (@Value1, @Value2)";
+
+                        connection.Execute(insertQuery, new { Value1 = Username, Value2 = Index });
+
+
+                    }
+                }
+               
 
 
 
@@ -93,8 +109,7 @@ namespace PDSA_Games._8Queens
             else
             {
                 ResultLabel.Content = "Incorrect solution!";
-                DialogBox dialogBox = new DialogBox();
-                dialogBox.Show();
+                
             }
         }
 
