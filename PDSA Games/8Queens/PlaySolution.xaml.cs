@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,7 +71,8 @@ namespace PDSA_Games._8Queens
             // Call SolutionCheck function and update result label
             bool isSolutionCorrect = Program.SolutionCheck(chessboard);
 
-            int? WinnderID;
+            int? solutionFound;
+
 
             if (isSolutionCorrect)
             {
@@ -83,23 +85,36 @@ namespace PDSA_Games._8Queens
 
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    string checkQuery = " select from Winner where SolutionIndex = @Index ";
+                    string checkQuery = "select SolutionIndex from Winner where (SolutionIndex = @Index or SolutionIndex is Null)";
+                    
 
-                   WinnderID = connection.Execute(checkQuery, new { Index = Index });
+                    solutionFound = connection.Query<int?>(checkQuery, new { Index = Index }).FirstOrDefault();
 
 
                 }
 
-                if (WinnderID != null)
+                if (solutionFound ==null)
                 {
                     using (var connection = new SqlConnection(connectionString))
                     {
                         string insertQuery = "INSERT INTO Winner (Name, SolutionIndex) VALUES (@Value1, @Value2)";
-
+                        string flagQuery = "SELECT COUNT(SolutionIndex)" +
+                                         "FROM Winner";
+                        string clearFlagQuery = "delete from Winner";
                         connection.Execute(insertQuery, new { Value1 = Username, Value2 = Index });
+
+                        int? flag = connection.Query<int?>(flagQuery).FirstOrDefault();
+                        if (flag == 92)
+                        {
+                            connection.Execute(flagQuery);
+                        }
 
 
                     }
+                }
+                else
+                {
+                    ResultLabel.Content = "Solution already found!. Try again";
                 }
                
 

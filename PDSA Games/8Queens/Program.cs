@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace PDSA_Games
@@ -23,6 +24,7 @@ namespace PDSA_Games
 
         public static List<Solution> GenerateSolutions()
         {
+            Stopwatch stopwatch = Stopwatch.StartNew();
             List<Solution> solutions = new List<Solution>();
             int count = 0;
             int[,] board = new int[N, N];
@@ -83,7 +85,8 @@ namespace PDSA_Games
                     }
                 }
             }
-
+            stopwatch.Stop(); // Stop measuring time
+            Trace.WriteLine("Normal time: " + stopwatch.ElapsedMilliseconds);
             return solutions;
         }
 
