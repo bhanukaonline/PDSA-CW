@@ -9,7 +9,6 @@
     <Grid>
         <Label Content="8 Queens Puzzle" HorizontalAlignment="Center" Height="41" Margin="0,21,0,0" VerticalAlignment="Top" Width="168" FontSize="18" FontFamily="Cascadia Code SemiBold"/>
         <Button x:Name="startGame" Content="Start Game" HorizontalAlignment="Center" Height="55" Margin="0,199,0,0" VerticalAlignment="Top" Width="114" FontFamily="Cascadia Code" FontSize="16" Click="startGame_Click"/>
-        <Label Content="Max Score: 69" HorizontalAlignment="Center" Margin="0,130,0,0" VerticalAlignment="Top" Height="33" Width="96"/>
         <Button Content="All Solutions" HorizontalAlignment="Center" Height="55" Margin="0,259,0,0" VerticalAlignment="Top" Width="114" Click="Button_Click" RenderTransformOrigin="2.074,1.539" FontSize="14" FontFamily="Cascadia Code"/>
 
     </Grid>
