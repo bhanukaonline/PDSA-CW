@@ -8,7 +8,8 @@
         Title="PlaySolution" Height="450" Width="800">
     <Grid>
         <Button Content="Submit Solution" Click="SubmitButton_Click" Margin="522,50,162,334"/>
-        <Label x:Name="ResultLabel" Content="text" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="506,133,0,0" RenderTransformOrigin="0.5,0.5" Width="183">
+        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Height="25" Margin="650,50,0,0" VerticalAlignment="Top" Width="119" Click="btnClear_Click_1"/>
+        <Label x:Name="ResultLabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="516,176,0,0" RenderTransformOrigin="0.5,0.5" Width="285" FontSize="14" Height="38">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -18,8 +19,8 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label x:Name="lblIndex" Content="Label" HorizontalAlignment="Left" Height="37" Margin="514,241,0,0" VerticalAlignment="Top" Width="254"/>
-        <Grid x:Name="ChessboardGrid">
+        <Label x:Name="lblIndex" Content="" HorizontalAlignment="Left" Height="37" Margin="510,241,0,0" VerticalAlignment="Top" Width="280" FontSize="14"/>
+        <Grid x:Name="ChessboardGrid" d:IsHidden="True">
             <Grid.Resources>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Width" Value="50"/>
