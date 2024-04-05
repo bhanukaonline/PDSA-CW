@@ -53,7 +53,7 @@ namespace PDSA_Games
 
         private void ShortestPath_Click(object sender, RoutedEventArgs e)
         {
-            ShortestPath shortestPath = new ShortestPath();
+            DialogBoxSP shortestPath = new DialogBoxSP();
             shortestPath.Show();
             Window mainWindow = Application.Current.MainWindow;
             mainWindow.Close();
