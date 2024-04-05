@@ -14,6 +14,7 @@
         <Button x:Name="queens" Content="8 Queens Puzzle" HorizontalAlignment="Left" Height="56" Margin="120,173,0,0" VerticalAlignment="Top" Width="195" FontFamily="Cascadia Mono SemiBold" FontSize="18" Click="_8queens_Click"/>
         <Button x:Name="tictactoe" Content="Tic Tac Toe" HorizontalAlignment="Left" Height="56" Margin="336,173,0,0" VerticalAlignment="Top" Width="195" FontFamily="Cascadia Mono SemiBold" FontSize="18" Click="tictactoe_Click"/>
         <Button x:Name="remValue" Content="Remember the Value" HorizontalAlignment="Left" Height="56" Margin="547,173,0,0" VerticalAlignment="Top" Width="195" FontFamily="Cascadia Mono SemiBold" FontSize="18" Click="remValue_Click"/>
-        <Button x:Name="ShortestPath" Content="Shortest Path" HorizontalAlignment="Left" Height="59" Margin="347,276,0,0" VerticalAlignment="Top" Width="173" Click="ShortestPath_Click" FontSize="18" FontFamily="Cascadia Mono SemiBold"/>
+        <Button x:Name="ShortestPath" Content="Shortest Path" HorizontalAlignment="Left" Height="59" Margin="201,276,0,0" VerticalAlignment="Top" Width="173" Click="ShortestPath_Click" FontSize="18" FontFamily="Cascadia Mono SemiBold"/>
+        <Button x:Name="PredictValue" Content="Predict the Value" HorizontalAlignment="Left" Height="59" Margin="444,276,0,0" VerticalAlignment="Top" Width="176" Click="PredictValue_Click"/>
     </Grid>
 </Window>

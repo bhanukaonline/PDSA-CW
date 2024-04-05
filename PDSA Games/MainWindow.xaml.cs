@@ -58,5 +58,13 @@ namespace PDSA_Games
             Window mainWindow = Application.Current.MainWindow;
             mainWindow.Close();
         }
+
+        private void PredictValue_Click(object sender, RoutedEventArgs e)
+        {
+            PVWindow pvWindow = new PVWindow();
+            pvWindow.Show();
+            Window mainWindow = Application.Current.MainWindow;
+            mainWindow.Close();
+        }
     }
 }
