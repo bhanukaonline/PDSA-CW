@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace PDSA_Games
@@ -20,6 +21,8 @@ namespace PDSA_Games
         List<int> Fibonacciindex = new List<int>();
         public int targetIndex;
         public int targetValue;
+        public string Username { get; set; }
+
 
         public PredictGame()
         {
@@ -36,8 +39,30 @@ namespace PDSA_Games
             randomNumbers.Sort();
             targetIndex = random.Next(0, randomNumbers.Count);
             targetValue = randomNumbers[targetIndex];
-            ResultsTextBlock.Text = "New round started. Random numbers generated.";
+            ResultsTextBlock.Text = "Random numbers generated.";
             lblVallue.Content = $"Find the index of: {targetValue}";
+
+            List<int> comboBoxIndexes = new List<int>();
+            comboBoxIndexes.Add(targetIndex); // Ensure target index is included
+
+            while (comboBoxIndexes.Count < 4)
+            {
+                int randomIndex = random.Next(randomNumbers.Count);
+                if (!comboBoxIndexes.Contains(randomIndex))
+                {
+                    comboBoxIndexes.Add(randomIndex);
+                }
+            }
+
+            // Shuffle the indexes to randomize the ComboBox items
+            comboBoxIndexes = Shuffle(comboBoxIndexes);
+
+            // Set ComboBox items
+            PredictionComboBox.Items.Clear();
+            foreach (int index in comboBoxIndexes)
+            {
+                PredictionComboBox.Items.Add(new ComboBoxItem { Content = $"Option {index}" });
+            }
 
             PredictionComboBox.IsEnabled = true;
             PredictionResultTextBlock.Text = "New round started. Predict the index of the target value.";
@@ -275,8 +300,24 @@ namespace PDSA_Games
             return -1; // Target not found
         }
 
+        private List<T> Shuffle<T>(List<T> list)
+        {
+            Random rng = new Random();
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+            return list;
+        }
         private void SubmitPrediction_Click(object sender, RoutedEventArgs e)
         {
+            var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+            
             if (PredictionComboBox.SelectedItem != null)
             {
                 ComboBoxItem selectedItem = (ComboBoxItem)PredictionComboBox.SelectedItem;
@@ -285,6 +326,13 @@ namespace PDSA_Games
                 if (predictedIndex == targetIndex)
                 {
                     PredictionResultTextBlock.Text = "Congratulations! Your prediction was correct.";
+
+                    using (var connection = new SqlConnection(connectionString))
+                    {
+                        string insertQuery = "INSERT INTO PredictValueIndexGame (Username, IndexValues) VALUES (@Username,@Index)";
+
+                        connection.Execute(insertQuery, new { Username = Username, Index = targetIndex });
+                    }
                 }
                 else
                 {

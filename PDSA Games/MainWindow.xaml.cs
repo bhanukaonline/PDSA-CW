@@ -44,8 +44,8 @@ namespace PDSA_Games
 
         private void remValue_Click(object sender, RoutedEventArgs e)
         {
-            //RememberTheValue rememberTheValue = new RememberTheValue();
-            //rememberTheValue.Show();
+            RememberGame rememberTheValue = new RememberGame();
+            rememberTheValue.Show();
 
             Window mainWindow = Application.Current.MainWindow;
             mainWindow.Close();
@@ -61,7 +61,7 @@ namespace PDSA_Games
 
         private void PredictValue_Click(object sender, RoutedEventArgs e)
         {
-            PredictGame pvWindow = new PredictGame();
+            DialogBoxPV pvWindow = new DialogBoxPV();
             pvWindow.Show();
             Window mainWindow = Application.Current.MainWindow;
             mainWindow.Close();
