@@ -30,6 +30,7 @@ namespace PDSA_Games._8Queens
         {
             InitializeComponent();
             InitializeChessboard();
+
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -68,83 +69,65 @@ namespace PDSA_Games._8Queens
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             // Call SolutionCheck function and update result label
+            bool isSolutionCorrect = Program.SolutionCheck(chessboard);
 
-            
-                int count = 0;
-                for (int row = 0; row < 8; row++)
+            int? solutionFound;
+
+
+            if (isSolutionCorrect)
+            {
+
+                ResultLabel.Content = "Correct solution!";
+
+                int Index= Program.GetSolutionIndex(chessboard);
+                lblIndex.Content = "Your found solution Number: " + Index;
+                var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+
+                using (var connection = new SqlConnection(connectionString))
                 {
-                    for (int col = 0; col < 8; col++)
-                    {
-                        if (chessboard[row, col] == 1)
-                        {
-                            count++;
-                        }
-                    }
+                    string checkQuery = "select SolutionIndex from Winner where (SolutionIndex = @Index or SolutionIndex is Null)";
+                    
+
+                    solutionFound = connection.Query<int?>(checkQuery, new { Index = Index }).FirstOrDefault();
+
+
                 }
 
-                bool hasEightQueens = count == 8;
-
-                if (hasEightQueens) {
-                bool isSolutionCorrect = Program.SolutionCheck(chessboard);
-
-                int? solutionFound;
-
-
-                if (isSolutionCorrect)
+                if (solutionFound ==null)
                 {
-
-                    ResultLabel.Content = "Correct solution!";
-
-                    int Index = Program.GetSolutionIndex(chessboard);
-                    lblIndex.Content = "Your found solution Number: " + Index;
-                    var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
-
                     using (var connection = new SqlConnection(connectionString))
                     {
-                        string checkQuery = "select SolutionIndex from Winner where (SolutionIndex = @Index or SolutionIndex is Null)";
+                        string insertQuery = "INSERT INTO Winner (Name, SolutionIndex) VALUES (@Value1, @Value2)";
+                        string flagQuery = "SELECT COUNT(SolutionIndex)" +
+                                         "FROM Winner";
+                        string clearFlagQuery = "delete from Winner";
+                        connection.Execute(insertQuery, new { Value1 = Username, Value2 = Index });
 
-
-                        solutionFound = connection.Query<int?>(checkQuery, new { Index = Index }).FirstOrDefault();
-
-
-                    }
-
-                    if (solutionFound == null)
-                    {
-                        using (var connection = new SqlConnection(connectionString))
+                        int? flag = connection.Query<int?>(flagQuery).FirstOrDefault();
+                        if (flag == 92)
                         {
-                            string insertQuery = "INSERT INTO Winner (Name, SolutionIndex) VALUES (@Value1, @Value2)";
-                            string flagQuery = "SELECT COUNT(SolutionIndex)" +
-                                             "FROM Winner";
-                            string clearFlagQuery = "delete from Winner";
-                            connection.Execute(insertQuery, new { Value1 = Username, Value2 = Index });
-
-                            int? flag = connection.Query<int?>(flagQuery).FirstOrDefault();
-                            if (flag == 92)
-                            {
-                                connection.Execute(flagQuery);
-                            }
+                            connection.Execute(flagQuery);
                         }
-                    }
-                    else
-                    {
-                        ResultLabel.Content = "Solution already found!. Try again";
+
+
                     }
                 }
                 else
                 {
-                    ResultLabel.Content = "Incorrect solution!";
+                    ResultLabel.Content = "Solution already found!. Try again";
                 }
+               
+
+
 
             }
             else
             {
-                ResultLabel.Content = "You must place 8 queens on the board!";
-
+                ResultLabel.Content = "Incorrect solution!";
+                
             }
-
-
         }
+
         private void UpdateChessboardUI()
         {
             for (int row = 0; row < 8; row++)
@@ -167,19 +150,6 @@ namespace PDSA_Games._8Queens
             }
         }
 
-        private void btnClear_Click(object sender, RoutedEventArgs e)
-        {
-            // Clear the chessboard array
-            for (int row = 0; row < 8; row++)
-            {
-                for (int col = 0; col < 8; col++)
-                {
-                    chessboard[row, col] = 0;
-                }
-            }
 
-            // Update the UI based on the cleared chessboard array
-            UpdateChessboardUI();
-        }
     }
 }
