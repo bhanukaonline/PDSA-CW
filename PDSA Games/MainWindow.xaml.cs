@@ -44,7 +44,7 @@ namespace PDSA_Games
 
         private void remValue_Click(object sender, RoutedEventArgs e)
         {
-            RememberGame rememberTheValue = new RememberGame();
+            DialogBoxRV rememberTheValue = new DialogBoxRV();
             rememberTheValue.Show();
 
             Window mainWindow = Application.Current.MainWindow;

@@ -9,6 +9,7 @@
     <Grid>
         <Button x:Name="StartRound" Content="StartRound" HorizontalAlignment="Left" Height="51" Margin="257,71,0,0" VerticalAlignment="Top" Width="180" Click="StartRound_Click"/>
         <Button x:Name="PerformSort" Content="Perform Sort" HorizontalAlignment="Left" Height="50" Margin="257,185,0,0" VerticalAlignment="Top" Width="180" Click="PerformSort_Click"/>
+        <TextBlock x:Name="ResultsTextBlock" HorizontalAlignment="Left" Height="81" Margin="531,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218"/>
 
     </Grid>
 </Window>

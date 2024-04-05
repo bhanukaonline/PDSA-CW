@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace PDSA_Games
 {
@@ -25,6 +26,7 @@ namespace PDSA_Games
         Random random = new Random();
         public string Username { get; set; }
         List<int> randomNumbers = new List<int>();
+        private List<int> sortedNumbers = new List<int>();
 
         public RememberGame()
         {
@@ -34,10 +36,71 @@ namespace PDSA_Games
         private void StartRound_Click(object sender, RoutedEventArgs e)
         {
             randomNumbers.Clear();
+            sortedNumbers.Clear();
+
             for (int i = 0; i < 5000; i++)
             {
                 randomNumbers.Add(random.Next(1, 1000000));
             }
+            randomNumbers.Sort();
+            sortedNumbers.AddRange(randomNumbers.GetRange(0, 20));
+            ResultsTextBlock.Text = "New round started. Random numbers generated.";
+            DisplayNumbersOneByOne();
+        }
+        private async void DisplayNumbersOneByOne()
+        {
+            var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+
+            foreach (var number in sortedNumbers)
+            {
+                ResultsTextBlock.Text = $"Displaying number: {number}";
+                await Task.Delay(2000); // Delay for 2 seconds
+            }
+
+            int firstRandomIndex = random.Next(0, 20);
+            int secondRandomIndex;
+            do
+            {
+                secondRandomIndex = random.Next(0, 20);
+            } while (secondRandomIndex == firstRandomIndex);
+
+            int firstRandomValue = sortedNumbers[firstRandomIndex];
+            int secondRandomValue = sortedNumbers[secondRandomIndex];
+
+            // Prompt user to enter the index of the two randomly chosen values
+            int userInput1 = PromptUserForIndex(firstRandomValue);
+            int userInput2 = PromptUserForIndex(secondRandomValue);
+
+            // Check if the user identified the answer correctly
+            bool isCorrect1 = userInput1.ToString() == firstRandomIndex.ToString();
+            bool isCorrect2 = userInput2.ToString() == secondRandomIndex.ToString();
+
+            if (isCorrect1 && isCorrect2)
+            {
+                ResultsTextBlock.Text = "Congratulations! You correctly identified both values.";
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    string insertQuery = "INSERT INTO RememberValueIndexGame (Username,FirstValue,FirstIndex,SecondValue,SecondIndex) VALUES (@Username,@FirstValue,@FirstIndex,@SecondValue,@SecondIndex)";
+                    connection.Execute(insertQuery, new { Username, FirstValue = firstRandomValue, FirstIndex = firstRandomIndex, SecondValue = secondRandomValue, SecondIndex = secondRandomIndex});
+                }
+
+            }
+            else
+            {
+                ResultsTextBlock.Text = "Sorry, you did not identify the values correctly.";
+            }
+        }
+
+        private int PromptUserForIndex(int value)
+        {
+            int userInput;
+            string inputString;
+            do
+            {
+                inputString = Microsoft.VisualBasic.Interaction.InputBox($"Enter the index of {value}:");
+            } while (!int.TryParse(inputString, out userInput) || userInput < 0 || userInput >= 20);
+
+            return userInput;
         }
 
         private void PerformSort_Click(object sender, RoutedEventArgs e)
