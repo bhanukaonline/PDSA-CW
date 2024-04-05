@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Windows;
+using System.Windows.Controls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace PDSA_Games
@@ -17,15 +18,15 @@ namespace PDSA_Games
         List<int> Jumpindex = new List<int>();
         List<int> Exponentialindex = new List<int>();
         List<int> Fibonacciindex = new List<int>();
+        public int targetIndex;
+        public int targetValue;
 
         public PredictGame()
         {
             InitializeComponent();
-        var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
-
         }
        
-        private void StartNewRound_Click(object sender, RoutedEventArgs e)
+        public void StartNewRound_Click(object sender, RoutedEventArgs e)
         {
             randomNumbers.Clear();
             for (int i = 0; i < 5000; i++)
@@ -33,14 +34,18 @@ namespace PDSA_Games
                 randomNumbers.Add(random.Next(1, 1000000)); 
             }
             randomNumbers.Sort();
-
+            targetIndex = random.Next(0, randomNumbers.Count);
+            targetValue = randomNumbers[targetIndex];
             ResultsTextBlock.Text = "New round started. Random numbers generated.";
+            lblVallue.Content = $"Find the index of: {targetValue}";
+
+            PredictionComboBox.IsEnabled = true;
+            PredictionResultTextBlock.Text = "New round started. Predict the index of the target value.";
         }
 
         private void PerformSearches_Click(object sender, RoutedEventArgs e)
         {
-            int targetIndex = random.Next(0, randomNumbers.Count);
-            int target = randomNumbers[targetIndex];
+            
             Stopwatch stopwatch = new Stopwatch();
             var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
 
@@ -270,5 +275,33 @@ namespace PDSA_Games
             return -1; // Target not found
         }
 
+        private void SubmitPrediction_Click(object sender, RoutedEventArgs e)
+        {
+            if (PredictionComboBox.SelectedItem != null)
+            {
+                ComboBoxItem selectedItem = (ComboBoxItem)PredictionComboBox.SelectedItem;
+                int predictedIndex = int.Parse(selectedItem.Content.ToString().Split(' ')[1]);
+
+                if (predictedIndex == targetIndex)
+                {
+                    PredictionResultTextBlock.Text = "Congratulations! Your prediction was correct.";
+                }
+                else
+                {
+                    PredictionResultTextBlock.Text = $"Incorrect. The correct index is {targetIndex}.";
+                }
+
+                PredictionComboBox.IsEnabled = false;
+            }
+            else
+            {
+                PredictionResultTextBlock.Text = "Please select a prediction before submitting.";
+            }
+        }
+
+        private void PredictionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PredictionResultTextBlock.Text = ""; // Clear previous prediction result
+        }
     }
 }
