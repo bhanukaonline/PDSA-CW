@@ -34,8 +34,8 @@ namespace PDSA_Games
 
         private void tictactoe_Click(object sender, RoutedEventArgs e)
         {
-            //TicTacToe ticTacToe = new TicTacToe();
-            //ticTacToe.Show();
+            DialogBoxTicTacToe ticTacToe = new DialogBoxTicTacToe();
+            ticTacToe.Show();
 
             Window mainWindow = Application.Current.MainWindow;
             mainWindow.Close();
