@@ -5,17 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PDSA_Games._8Queens"
         mc:Ignorable="d"
-        Title="PlaySolution" Height="762" Width="873">
-    <Grid Height="468" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="790" Margin="0,0,0,101">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="185*"/>
-            <ColumnDefinition Width="292*"/>
-            <ColumnDefinition Width="313*"/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="178,31,0,0" VerticalAlignment="Top" Height="25" Width="113" Click="btnClear_Click" Cursor="Hand" Grid.Column="2"/>
-
-        <Button Content="Submit Solution" Click="SubmitButton_Click" Margin="0,31,170,0" Cursor="Hand" Grid.Column="2" Height="37" VerticalAlignment="Top" HorizontalAlignment="Right" Width="107"/>
-        <Label x:Name="ResultLabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,122,0,0" RenderTransformOrigin="0.5,0.5" Width="275" FontSize="14" Grid.Column="2">
+        Title="PlaySolution" Height="450" Width="800">
+    <Grid>
+        <Button Content="Submit Solution" Click="SubmitButton_Click" Margin="522,50,162,334"/>
+        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Height="25" Margin="650,50,0,0" VerticalAlignment="Top" Width="119" Click="btnClear_Click_1"/>
+        <Label x:Name="ResultLabel" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="516,176,0,0" RenderTransformOrigin="0.5,0.5" Width="285" FontSize="14" Height="38">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -25,11 +19,11 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label x:Name="lblIndex" Content="" HorizontalAlignment="Left" Height="37" Margin="36,164,0,0" VerticalAlignment="Top" Width="254" FontSize="14" Grid.Column="2"/>
-        <Grid x:Name="ChessboardGrid" Margin="49,0,296,0" Grid.ColumnSpan="3">
+        <Label x:Name="lblIndex" Content="" HorizontalAlignment="Left" Height="37" Margin="510,241,0,0" VerticalAlignment="Top" Width="280" FontSize="14"/>
+        <Grid x:Name="ChessboardGrid" d:IsHidden="True">
             <Grid.Resources>
                 <Style TargetType="{x:Type Button}">
-                    <Setter Property="Width" Value="113"/>
+                    <Setter Property="Width" Value="50"/>
                     <Setter Property="Height" Value="50"/>
                     <Setter Property="FontSize" Value="16"/>
                     <Setter Property="Command" Value="{Binding PlaceQueenCommand}"/>
@@ -59,22 +53,6 @@
             </Grid.ColumnDefinitions>
 
         </Grid>
-        <Label Content="A" HorizontalAlignment="Left" Height="30" Margin="65,-35,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7"/>
-        <Label Content="B" HorizontalAlignment="Left" Height="30" Margin="113,-35,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7"/>
-        <Label Content="C" HorizontalAlignment="Left" Height="30" Margin="164,-35,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7" Grid.ColumnSpan="2"/>
-        <Label Content="D" HorizontalAlignment="Left" Height="30" Margin="30,-35,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7" Grid.Column="1"/>
-        <Label Content="F" HorizontalAlignment="Left" Height="30" Margin="78,-35,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7" Grid.Column="1"/>
-        <Label Content="G" HorizontalAlignment="Left" Height="30" Margin="124,-35,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7" Grid.Column="1"/>
-        <Label Content="H" HorizontalAlignment="Left" Height="30" Margin="180,-35,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7" Grid.Column="1"/>
-        <Label Content="1" HorizontalAlignment="Left" Height="30" Margin="10,364,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7"/>
-        <Label Content="8" HorizontalAlignment="Left" Height="30" Margin="10,11,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.375,0.633"/>
-        <Label Content="7" HorizontalAlignment="Left" Height="30" Margin="10,59,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7"/>
-        <Label Content="6" HorizontalAlignment="Left" Height="30" Margin="10,109,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7"/>
-        <Label Content="5" HorizontalAlignment="Left" Height="30" Margin="10,158,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7"/>
-        <Label Content="4" HorizontalAlignment="Left" Height="30" Margin="10,209,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7"/>
-        <Label Content="3" HorizontalAlignment="Left" Height="30" Margin="10,259,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7"/>
-        <Label Content="2" HorizontalAlignment="Left" Height="30" Margin="10,310,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7"/>
-        <Label Content="I" HorizontalAlignment="Left" Height="30" Margin="231,-35,0,0" VerticalAlignment="Top" Width="28" FontSize="14" RenderTransformOrigin="0.482,0.7" Grid.Column="1"/>
 
     </Grid>
 

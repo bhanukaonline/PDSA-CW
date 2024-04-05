@@ -22,8 +22,8 @@ namespace PDSA_Games._8Queens
     /// </summary>
     public partial class PlaySolution : Window
     {
-        private Button[,] chessboardButtons = new Button[8, 8]; 
-        private int[,] chessboard = new int[8, 8]; 
+        private Button[,] chessboardButtons = new Button[8, 8];
+        private int[,] chessboard = new int[8, 8];
 
         public string Username { get; set; }
         public PlaySolution()
@@ -69,22 +69,23 @@ namespace PDSA_Games._8Queens
         {
             // Call SolutionCheck function and update result label
 
-            
-                int count = 0;
-                for (int row = 0; row < 8; row++)
+
+            int count = 0;
+            for (int row = 0; row < 8; row++)
+            {
+                for (int col = 0; col < 8; col++)
                 {
-                    for (int col = 0; col < 8; col++)
+                    if (chessboard[row, col] == 1)
                     {
-                        if (chessboard[row, col] == 1)
-                        {
-                            count++;
-                        }
+                        count++;
                     }
                 }
+            }
 
-                bool hasEightQueens = count == 8;
+            bool hasEightQueens = count == 8;
 
-                if (hasEightQueens) {
+            if (hasEightQueens)
+            {
                 bool isSolutionCorrect = Program.SolutionCheck(chessboard);
 
                 int? solutionFound;
@@ -161,15 +162,17 @@ namespace PDSA_Games._8Queens
                     else
                     {
                         button.Content = "";
-                        
+
+
                     }
                 }
             }
         }
 
-        private void btnClear_Click(object sender, RoutedEventArgs e)
+        
+
+        private void btnClear_Click_1(object sender, RoutedEventArgs e)
         {
-            // Clear the chessboard array
             for (int row = 0; row < 8; row++)
             {
                 for (int col = 0; col < 8; col++)

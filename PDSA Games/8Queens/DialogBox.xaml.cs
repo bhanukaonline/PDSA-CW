@@ -29,7 +29,6 @@ namespace PDSA_Games._8Queens
         private void btnDialogOk_Click(object sender, RoutedEventArgs e)
         {
             string username = txtAnswer.Text;
-
             if (!string.IsNullOrEmpty(username))
             {
                 PlaySolution anotherWindow = new PlaySolution();
@@ -37,15 +36,13 @@ namespace PDSA_Games._8Queens
                 anotherWindow.Show();
                 this.Close();
 
-                
+
             }
             else
             {
                 MessageBox.Show("Username cannot be empty.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
-            
         }
 
         private void Window_ContentRendered(object sender, EventArgs e)
