@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dapper;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -43,13 +45,82 @@ namespace PDSA_Games
             Stopwatch stopwatch = new Stopwatch();
             var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
 
+            // Bubble Sort
+            stopwatch.Start();
             List<int> Bubblesort = SortingAlgorithms.BubbleSort(randomNumbers);
+            stopwatch.Stop();
+            TimeSpan bubbleSortTime = stopwatch.Elapsed;
+            using (var connection = new SqlConnection(connectionString))
+            {
+                string insertQuery = "INSERT INTO RememberValueIndex (SortingMethod,TimeTaken) VALUES ('Bubble Sort',@Time)";
+                connection.Execute(insertQuery, new { Time = bubbleSortTime });
+            }
+
+            // Insertion Sort
+            stopwatch.Restart();
             List<int> Insertionsort = SortingAlgorithms.InsertionSort(randomNumbers);
+            stopwatch.Stop();
+            TimeSpan insertionSortTime = stopwatch.Elapsed;
+            using (var connection = new SqlConnection(connectionString))
+            {
+                string insertQuery = "INSERT INTO RememberValueIndex (SortingMethod,TimeTaken) VALUES ('Insertion Sort',@Time)";
+                connection.Execute(insertQuery, new { Time = insertionSortTime });
+            }
+
+            // Merge Sort
+            stopwatch.Restart();
             List<int> Mergesort = SortingAlgorithms.MergeSort(randomNumbers);
+            stopwatch.Stop();
+            TimeSpan mergeSortTime = stopwatch.Elapsed;
+            using (var connection = new SqlConnection(connectionString))
+            {
+                string insertQuery = "INSERT INTO RememberValueIndex (SortingMethod,TimeTaken) VALUES ('Merge Sort',@Time)";
+                connection.Execute(insertQuery, new { Time = mergeSortTime });
+            }
+
+            // Radix Sort
+            stopwatch.Restart();
             List<int> Radixsort = SortingAlgorithms.RadixSort(randomNumbers);
+            stopwatch.Stop();
+            TimeSpan radixSortTime = stopwatch.Elapsed;
+            using (var connection = new SqlConnection(connectionString))
+            {
+                string insertQuery = "INSERT INTO RememberValueIndex (SortingMethod,TimeTaken) VALUES ('Radix Sort',@Time)";
+                connection.Execute(insertQuery, new { Time = radixSortTime });
+            }
+
+            // Shell Sort
+            stopwatch.Restart();
             List<int> Shellsort = SortingAlgorithms.ShellSort(randomNumbers);
+            stopwatch.Stop();
+            TimeSpan shellSortTime = stopwatch.Elapsed;
+            using (var connection = new SqlConnection(connectionString))
+            {
+                string insertQuery = "INSERT INTO RememberValueIndex (SortingMethod,TimeTaken) VALUES ('Shell Sort',@Time)";
+                connection.Execute(insertQuery, new { Time = shellSortTime });
+            }
+
+            // Quick Sort
+            stopwatch.Restart();
             List<int> Quicksort = SortingAlgorithms.QuickSort(randomNumbers);
+            stopwatch.Stop();
+            TimeSpan quickSortTime = stopwatch.Elapsed;
+            using (var connection = new SqlConnection(connectionString))
+            {
+                string insertQuery = "INSERT INTO RememberValueIndex (SortingMethod,TimeTaken) VALUES ('Quick Sort',@Time)";
+                connection.Execute(insertQuery, new { Time = quickSortTime });
+            }
+
+            // Tim Sort
+            stopwatch.Restart();
             List<int> Timsort = SortingAlgorithms.TimSort(randomNumbers);
+            stopwatch.Stop();
+            TimeSpan timSortTime = stopwatch.Elapsed;
+            using (var connection = new SqlConnection(connectionString))
+            {
+                string insertQuery = "INSERT INTO RememberValueIndex (SortingMethod,TimeTaken) VALUES ('Tim Sort',@Time)";
+                connection.Execute(insertQuery, new { Time = timSortTime });
+            }
 
 
 
@@ -262,7 +333,10 @@ namespace PDSA_Games
                         int mid = left + size - 1;
                         int right = Math.Min((left + 2 * size - 1), (n - 1));
 
-                        Merge(sortedArray, left, mid, right);
+                        if (mid < right)
+                        {
+                            Merge(sortedArray, left, mid, right);
+                        }
                     }
                 }
 
