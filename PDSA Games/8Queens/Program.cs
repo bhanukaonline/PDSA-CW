@@ -8,7 +8,7 @@ namespace PDSA_Games
     public class Solution
     {
         public int Number { get; set; }
-        public int[,] Board { get; set; } // Changed from string to int[,]
+        public int[,] Board { get; set; } 
 
         // Constructor to initialize the Board property
         public Solution(int number, int[,] board)
