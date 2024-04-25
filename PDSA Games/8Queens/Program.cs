@@ -101,7 +101,7 @@ namespace PDSA_Games
                     sum = sum + board[i, j];
                 }
                 if (sum > 1)
-                {
+                { 
                     return false;
                 }
             }

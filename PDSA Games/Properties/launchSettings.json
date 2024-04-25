@@ -2,9 +2,9 @@
   "profiles": {
     "PDSA Games": {
       "commandName": "Project",
-      "environmentVariables": {
-        "ConnectionString": "Server=tcp:bhanuka.database.windows.net,1433;Initial Catalog=PDSACW;Persist Security Info=False;User ID=serveradmin;Password=Hardline76;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-      }
+      "sqlDebugging": true,
+      "nativeDebugging": true,
+      "jsWebView2Debugging": true
     }
   }
 }

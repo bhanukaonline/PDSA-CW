@@ -11,7 +11,7 @@ namespace PDSA_Games
     public partial class ShortestPathGame : Window
     {
         private Dictionary<string, Dictionary<string, int>> distanceTable = new Dictionary<string, Dictionary<string, int>>();
-        private string selectedCity;
+        public string selectedCity;
         private Random random = new Random();
         string cityName;
         public string Username { get; set; }
@@ -121,7 +121,7 @@ namespace PDSA_Games
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+            string connectionString = (string)Application.Current.Resources["ConnectionString"];
 
             // Check player's answers
             cityName = txtCityName.Text.Trim();
@@ -233,7 +233,7 @@ namespace PDSA_Games
 
         private void CheckAlgo_Click(object sender, RoutedEventArgs e)
         {
-            var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+            string connectionString = (string)Application.Current.Resources["ConnectionString"];
 
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();

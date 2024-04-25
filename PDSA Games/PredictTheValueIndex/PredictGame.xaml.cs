@@ -72,7 +72,7 @@ namespace PDSA_Games
         {
             
             Stopwatch stopwatch = new Stopwatch();
-            var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+            string connectionString = (string)Application.Current.Resources["ConnectionString"];
 
 
             // Perform binary search
@@ -316,8 +316,9 @@ namespace PDSA_Games
         }
         private void SubmitPrediction_Click(object sender, RoutedEventArgs e)
         {
-            var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
-            
+            string connectionString = (string)Application.Current.Resources["ConnectionString"];
+
+
             if (PredictionComboBox.SelectedItem != null)
             {
                 ComboBoxItem selectedItem = (ComboBoxItem)PredictionComboBox.SelectedItem;

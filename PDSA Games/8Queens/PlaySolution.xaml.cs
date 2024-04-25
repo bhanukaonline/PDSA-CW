@@ -98,7 +98,7 @@ namespace PDSA_Games._8Queens
 
                     int Index = Program.GetSolutionIndex(chessboard);
                     lblIndex.Content = "Your found solution Number: " + Index;
-                    var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+                    string connectionString = (string)Application.Current.Resources["ConnectionString"];
 
                     using (var connection = new SqlConnection(connectionString))
                     {

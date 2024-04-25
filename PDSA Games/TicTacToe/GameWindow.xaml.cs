@@ -57,7 +57,7 @@ namespace PDSA_Games
                 if (winner == "X")
                 {
                     MessageBox.Show("Congratulations! You won!");
-                    var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+                    string connectionString = (string)Application.Current.Resources["ConnectionString"];
 
                     using (var connection = new SqlConnection(connectionString))
                     {
@@ -102,10 +102,7 @@ namespace PDSA_Games
 
         private void ComputerMove()
         {
-            // Implement the Minimax algorithm with Alpha-Beta pruning for the computer player
-            // This part of the code will determine the best move for the computer player
-            // You can refer to online resources or tutorials on Minimax with Alpha-Beta pruning implementation in C#
-            // Here's a simplified version for demonstration purposes:
+            
 
             int bestScore = int.MinValue;
             int bestRow = -1;
@@ -183,6 +180,13 @@ namespace PDSA_Games
                 }
                 return bestScore;
             }
+        }
+
+        private void Menu_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+                this.Close();
         }
     }
 }
