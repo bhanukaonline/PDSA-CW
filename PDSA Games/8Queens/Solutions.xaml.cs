@@ -61,7 +61,5 @@ namespace PDSA_Games._8Queens
                 lblSolution.Content = $"Solution {currentSolutionIndex + 1} of {solutions.Count}";
             }
         }
-
-       
     }
 }

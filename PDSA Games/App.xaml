@@ -1,9 +1,9 @@
 ﻿<Application x:Class="PDSA_Games.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PDSA_Games" xmlns:sys="clr-namespace:System;assembly=netstandard"
+             xmlns:local="clr-namespace:PDSA_Games"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <sys:String x:Key="ConnectionString">Server=tcp:bhanuka.database.windows.net,1433;Initial Catalog=PDSACW;Persist Security Info=False;User ID=serveradmin;Password=Hardline76;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;</sys:String>
+         
     </Application.Resources>
 </Application>

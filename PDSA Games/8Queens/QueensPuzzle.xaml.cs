@@ -37,12 +37,5 @@ namespace PDSA_Games
             Solutions solutions = new Solutions();
             solutions.Show();
         }
-
-        private void Menu_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow main = new MainWindow();
-            main.Show();
-            this.Close();
-        }
     }
 }

@@ -49,7 +49,7 @@ namespace PDSA_Games
         }
         private async void DisplayNumbersOneByOne()
         {
-            string connectionString = (string)Application.Current.Resources["ConnectionString"];
+            var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
 
             foreach (var number in sortedNumbers)
             {
@@ -106,7 +106,7 @@ namespace PDSA_Games
         private void PerformSort_Click(object sender, RoutedEventArgs e)
         {
             Stopwatch stopwatch = new Stopwatch();
-            string connectionString = (string)Application.Current.Resources["ConnectionString"];
+            var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
 
             // Bubble Sort
             stopwatch.Start();
