@@ -267,5 +267,12 @@ namespace PDSA_Games
             PopulateDistanceTable();
             SelectRandomCity();
         }
+
+        private void Menu_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
     }
 }

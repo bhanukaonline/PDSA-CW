@@ -28,5 +28,7 @@
             <Button x:Name="btn21" Grid.Row="2" Grid.Column="1" Click="Button_Click"/>
             <Button x:Name="btn22" Grid.Row="2" Grid.Column="2" Click="Button_Click"/>
         </Grid>
+        <Label Content="Tic Tac Toe" HorizontalAlignment="Left" Height="32" Margin="52,10,0,0" VerticalAlignment="Top" Width="127" FontSize="16" FontFamily="Cascadia Code"/>
+        <Button x:Name="Menu" Content="Main Menu" HorizontalAlignment="Left" Height="46" Margin="284,10,0,0" VerticalAlignment="Top" Width="114" FontSize="16" FontFamily="Cascadia Code" Click="Menu_Click"/>
     </Grid>
 </Window>

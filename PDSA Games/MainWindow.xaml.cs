@@ -27,18 +27,16 @@ namespace PDSA_Games
             QueensPuzzle queensPuzzle = new QueensPuzzle();
 
             queensPuzzle.Show();
+            this.Close();
 
-            Window mainWindow = Application.Current.MainWindow;
-            mainWindow.Close();
         }
 
         private void tictactoe_Click(object sender, RoutedEventArgs e)
         {
             DialogBoxTicTacToe ticTacToe = new DialogBoxTicTacToe();
             ticTacToe.Show();
+            this.Close();
 
-            Window mainWindow = Application.Current.MainWindow;
-            mainWindow.Close();
 
         }
 
@@ -46,25 +44,22 @@ namespace PDSA_Games
         {
             DialogBoxRV rememberTheValue = new DialogBoxRV();
             rememberTheValue.Show();
+            this.Close();
 
-            Window mainWindow = Application.Current.MainWindow;
-            mainWindow.Close();
         }
 
         private void ShortestPath_Click(object sender, RoutedEventArgs e)
         {
             DialogBoxSP shortestPath = new DialogBoxSP();
             shortestPath.Show();
-            Window mainWindow = Application.Current.MainWindow;
-            mainWindow.Close();
+            this.Close();
         }
 
         private void PredictValue_Click(object sender, RoutedEventArgs e)
         {
             DialogBoxPV pvWindow = new DialogBoxPV();
             pvWindow.Show();
-            Window mainWindow = Application.Current.MainWindow;
-            mainWindow.Close();
+            this.Close();
         }
     }
 }

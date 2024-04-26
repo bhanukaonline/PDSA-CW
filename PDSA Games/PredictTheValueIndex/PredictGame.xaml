@@ -4,8 +4,8 @@
         xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="PDSA_Games.PredictGame"
         Title="Search Game" Height="583" Width="800">
     <Grid>
-        <Button Content="Start new round" Click="StartNewRound_Click" Margin="303,55,303,0" Height="65" VerticalAlignment="Top"/>
-        <Button Content="Perform Searches" Click="PerformSearches_Click" Margin="629,10,0,0" HorizontalAlignment="Left" Width="161" Height="47" VerticalAlignment="Top"/>
+        <Button Content="Start new round" Click="StartNewRound_Click" Margin="303,55,303,0" Height="65" VerticalAlignment="Top" FontSize="16" FontFamily="Cascadia Code"/>
+        <Button Content="Perform Searches" Click="PerformSearches_Click" Margin="629,10,0,0" HorizontalAlignment="Left" Width="161" Height="47" VerticalAlignment="Top" FontSize="16" FontFamily="Cascadia Code"/>
         <TextBlock x:Name="ResultsTextBlock" Margin="518,62,11,338"/>
         <ComboBox x:Name="PredictionComboBox" SelectionChanged="PredictionComboBox_SelectionChanged" Margin="199,268,400,232">
             <ComboBoxItem>Option 1</ComboBoxItem>
@@ -13,8 +13,9 @@
             <ComboBoxItem>Option 3</ComboBoxItem>
             <ComboBoxItem>Option 4</ComboBoxItem>
         </ComboBox>
-        <Button x:Name="SubmitPredict" Content="Submit Prediction" Click="SubmitPrediction_Click" Margin="442,268,205,232"/>
+        <Button x:Name="SubmitPredict" Content="Submit Prediction" Click="SubmitPrediction_Click" Margin="442,268,190,232" FontSize="16" FontFamily="Cascadia Code"/>
         <TextBlock x:Name="PredictionResultTextBlock" Margin="199,340,145,155" FontSize="14"/>
         <Label x:Name="lblVallue" Content="" HorizontalAlignment="Left" Height="45" Margin="293,234,0,0" VerticalAlignment="Top" Width="246" FontSize="14" FontWeight="Bold"/>
+        <Button x:Name="Menu" Content="Main Menu" HorizontalAlignment="Left" Height="47" Margin="10,10,0,0" VerticalAlignment="Top" Width="151" FontSize="16" FontFamily="Cascadia Code" Click="Menu_Click"/>
     </Grid>
 </Window>

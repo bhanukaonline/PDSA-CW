@@ -184,5 +184,12 @@ namespace PDSA_Games
                 return bestScore;
             }
         }
+
+        private void Menu_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
+        }
     }
 }

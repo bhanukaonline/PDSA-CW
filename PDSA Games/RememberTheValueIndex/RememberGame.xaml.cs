@@ -18,9 +18,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace PDSA_Games
 {
-    /// <summary>
-    /// Interaction logic for RememberGame.xaml
-    /// </summary>
+    
     public partial class RememberGame : Window
     {
         Random random = new Random();
@@ -185,6 +183,15 @@ namespace PDSA_Games
                 connection.Execute(insertQuery, new { Time = timSortTime });
             }
 
+            ResultsTextBlock.Text =  "Sorting completed. Times taken:\n"+
+                                     "Buble Sort: "+bubbleSortTime.ToString()+"\n"+
+                                     "Insertion Sort: "+insertionSortTime.ToString()+"\n"+
+                                     "Merge Sort: "+mergeSortTime.ToString()+"\n" +
+                                     "Radix Sort: "+radixSortTime.ToString()+"\n" +
+                                     "Shell Sort: "+shellSortTime.ToString()+"\n" +
+                                     "Quick Sort: "+quickSortTime.ToString()+"\n" +
+                                     "Tim Sort: "+timSortTime.ToString();
+                                    
 
 
 
@@ -466,6 +473,13 @@ namespace PDSA_Games
                     k++;
                 }
             }
+        }
+
+        private void Menu_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
         }
     }
 }
