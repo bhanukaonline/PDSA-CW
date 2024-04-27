@@ -47,7 +47,7 @@ namespace PDSA_Games
         }
         private async void DisplayNumbersOneByOne()
         {
-            var connectionString = Environment.GetEnvironmentVariable("ConnectionString");
+            var connectionString = Environment.GetEnvironmentVariable("ConnectionString"); //db
 
             foreach (var number in sortedNumbers)
             {
